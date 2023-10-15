@@ -48,6 +48,4 @@ namespace Lab_2
     {
 
     }
-
-    
 }
