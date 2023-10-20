@@ -25,15 +25,17 @@ namespace Matrix
             lineB = Program.ReadInt();
             Console.Write("\nВведите число столбцов для матрицы B: ");
             columnB = Program.ReadInt();
+
             Console.Write("\nВведите значение для матрицы A: ");
-            valuesA = Matrixs.InputMatrix(lineA, columnA);
+            valuesA = InputMatrix(lineA, columnA);
             Console.Write("\nВведите значение для матрицы B: ");
-            valuesB = Matrixs.InputMatrix(lineB, columnB);
+            valuesB = InputMatrix(lineB, columnB);
+            
             Console.WriteLine("\n-----------ВВОД ДАННЫХ ЗАКОНЧЕН----------\n");
-            matrixA = new Matrixs(lineA, columnA, valuesA); // Метод создания матрицы из полученной информации.
+            matrixA = new Matrixs(lineA, columnA, valuesA); // Метод создания матриц из полученной информации.
             matrixB = new Matrixs(lineB, columnB, valuesB);
 
-            bool isRun = true;  // Это действие необходимо для начала работы цикла с выбором действий.
+            bool isRun = true;
 
             while (isRun) // Консольное меню.
             {
@@ -51,12 +53,12 @@ namespace Matrix
                 {
                     case 1:
                         Console.WriteLine("\n");
-                        Matrixs.OutputMatrix(matrixA);  // Метод вывода матрицы А.
+                        OutputMatrix(matrixA);  // Метод вывода матрицы А.
                         break;
 
                     case 2:
                         Console.WriteLine("\n");
-                        Matrixs.OutputMatrix(matrixB); // Метод вывода матрицы Б.
+                        OutputMatrix(matrixB); // Метод вывода матрицы Б.
                         break;
 
                     case 3:
@@ -64,7 +66,7 @@ namespace Matrix
                         matrixC = matrixA * matrixB; // Операция умножения матриц.
                         if (matrixC.Line != 0)
                         {
-                            Matrixs.OutputMatrix(matrixC);
+                            OutputMatrix(matrixC);
                         }
                         else
                         {
@@ -85,21 +87,21 @@ namespace Matrix
                                 case 1:
                                     Console.WriteLine("\n");
                                     matrixA = number * matrixA; // Операция умножения матрицы на число.
-                                    Matrixs.OutputMatrix(matrixA);
+                                    OutputMatrix(matrixA);
                                     choice = false;
                                     break;
 
                                 case 2:
                                     Console.WriteLine("\n");
                                     matrixB = number * matrixB;
-                                    Matrixs.OutputMatrix(matrixB);
+                                    OutputMatrix(matrixB);
                                     choice = false;
                                     break;
 
                                 case 3:
                                     Console.WriteLine("\n");
                                     matrixC = number * matrixC;
-                                    Matrixs.OutputMatrix(matrixC);
+                                    OutputMatrix(matrixC);
                                     choice = false;
                                     break;
 
@@ -156,6 +158,43 @@ namespace Matrix
                 numeral = Console.ReadLine();
             }
             return value;
+        }
+
+        /// <summary>
+        /// Метод ввода матрицы из консоли.
+        /// </summary>
+        /// <param name="line"></param>
+        /// <param name="column"></param>
+        /// <returns></returns>
+        public static double[,] InputMatrix(int line, int column)
+        {
+            int i, j;
+            double[,] value = new double[1000, 1000];
+
+            for (i = 0; i < line; i++)
+                for (j = 0; j < column; j++)
+                    value[i, j] = Program.ReadDouble();
+
+            return value;
+        }
+
+        /// <summary>
+        /// Метод вывода матрицы в консоль.
+        /// </summary>
+        /// <param name="A"></param>
+        public static void OutputMatrix(Matrixs A)
+        {
+            int i, j;
+
+            for (i = 0; i < A.Line; i++)
+            {
+                for (j = 0; j < A.Column; j++)
+                {
+                    Console.Write(String.Format("{0,4:0.0}", A.Value[i, j]));
+                    Console.Write(" ");
+                }
+                Console.WriteLine("\n");
+            }
         }
     }
 }
