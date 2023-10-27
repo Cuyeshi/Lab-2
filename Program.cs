@@ -10,8 +10,8 @@ namespace Matrix
         {
             // Создание переменных типа Matrixs.
             Matrixs matrixA = new Matrixs();
-            Matrixs matrixB = new Matrixs(); 
-            Matrixs matrixC = new Matrixs(); 
+            Matrixs matrixB = new Matrixs();
+            Matrixs matrixC = new Matrixs();
             int lineA, columnA, lineB, columnB; // Создание переменных для обозначения строчек и столбцов матриц.
             // Создание двумерных массивов для обозначения элементов матриц.
             double[,] valuesA = new double[1000, 1000];
@@ -49,7 +49,7 @@ namespace Matrix
                 Console.WriteLine("║     4 - Умножение Матрицы на число;    ║");
                 Console.WriteLine("║        0 - Выход из программы;         ║");
                 Console.WriteLine("╚════════════════════════════════════════╝\n");
-                switch (Convert.ToInt32(Console.ReadLine()))
+                switch (Program.ReadDouble())
                 {
                     case 1:
                         Console.WriteLine("\n");
@@ -82,7 +82,7 @@ namespace Matrix
                         while (choice)
                         {
                             Console.Write("\nВыберите Матрицу(A - 1, B - 2, C - 3, Выход - 0): ");
-                            switch (Convert.ToInt32(Console.ReadLine()))
+                            switch (Program.ReadDouble())
                             {
                                 case 1:
                                     Console.WriteLine("\n");
