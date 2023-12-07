@@ -157,9 +157,7 @@ namespace Matrix
                 Console.WriteLine("Введённые данные не подходят. Введите корректное значение: ");
                 numeral = Console.ReadLine();
             }
-            return value;
         }
-
         /// <summary>
         /// Метод ввода матрицы из консоли.
         /// </summary>
@@ -168,7 +166,7 @@ namespace Matrix
         /// <returns></returns>
         public static double[,] InputMatrix(int line, int column)
         {
-            int i, j;
+            int i = 0;
             double[,] value = new double[1000, 1000];
 
             for (i = 0; i < line; i++)
@@ -177,23 +175,24 @@ namespace Matrix
 
             return value;
         }
-
         /// <summary>
         /// Метод вывода матрицы в консоль.
         /// </summary>
         /// <param name="A"></param>
         public static void OutputMatrix(Matrixs A)
         {
-            int i, j;
-
-            for (i = 0; i < A.Line; i++)
+            int i = 0;
+            while (i < A.Line)
             {
-                for (j = 0; j < A.Column; j++)
+                int j = 0;
+                while (j < A.Column)
                 {
                     Console.Write(String.Format("{0,4:0.0}", A.Value[i, j]));
                     Console.Write(" ");
+                    j++;
                 }
                 Console.WriteLine("\n");
+                i++;
             }
         }
     }
